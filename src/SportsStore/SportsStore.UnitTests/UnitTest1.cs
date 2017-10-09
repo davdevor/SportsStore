@@ -4,9 +4,12 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using SportsStore.Domain.Abstract;
 using SportsStore.Domain.Entities;
-using SportsStore.WebUI.Controllers;using SportsStore.WebUI.Models;
+using SportsStore.WebUI.Controllers;
+using SportsStore.WebUI.Models;
 using SportsStore.WebUI.HtmlHelpers;
-using System.Web.Mvc;using System;
+using System.Web.Mvc;
+using System;
+
 namespace SportsStore.UnitTests
 {
     [TestClass]
@@ -23,7 +26,8 @@ namespace SportsStore.UnitTests
                 new Product {ProductID = 2, Name = "P2"},
                 new Product {ProductID = 3, Name = "P3"},
                 new Product {ProductID = 4, Name = "P4"},
-                new Product {ProductID = 5, Name = "P5"}
+                new Product {ProductID = 5, Name = "P5"}
+
             });
             ProductController controller = new ProductController(mock.Object);
             controller.PageSize = 3;
@@ -60,7 +64,8 @@ namespace SportsStore.UnitTests
             + @"<a class=""btn btn-default btn-primary selected"" href=""Page2"">2</a>"
             + @"<a class=""btn btn-default"" href=""Page3"">3</a>",
             result.ToString());
-        }        [TestMethod]
+        }
+        [TestMethod]
         public void Can_Send_Pagination_View_Model()
         {
             // Arrange
@@ -83,6 +88,8 @@ namespace SportsStore.UnitTests
             Assert.AreEqual(pageInfo.ItemsPerPage, 3);
             Assert.AreEqual(pageInfo.TotalItems, 5);
             Assert.AreEqual(pageInfo.TotalPages, 2);
-        }
+        }
+
+
     }
 }
